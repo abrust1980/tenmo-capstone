@@ -1,0 +1,17 @@
+Get current account balance
+GET: /account/balance
+
+Send transfer to another account or request a transfer
+POST: /account/transfers
+
+Get transfer for account
+GET: /account/transfers
+
+Get details for specific ID for account
+GET: /account/transfers/{id}
+
+See only pending transfers
+GET: /account/transfer/pending
+
+Update pending to approve/reject
+PUT: /account/transfers
