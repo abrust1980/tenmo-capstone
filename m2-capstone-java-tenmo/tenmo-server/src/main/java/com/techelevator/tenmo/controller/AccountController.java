@@ -1,6 +1,7 @@
 package com.techelevator.tenmo.controller;
 
 import com.techelevator.tenmo.dao.AccountDao;
+import com.techelevator.tenmo.model.Account;
 import com.techelevator.tenmo.model.Balance;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,8 @@ public class AccountController {
 
     @RequestMapping(path="/balance", method= RequestMethod.GET)
     public Balance getAccountBalance(Principal principal){
-        return accountDao.getAccountBalance(principal.getName());
+        Account currentAccount = accountDao.getAccount(principal.getName());
+        return currentAccount.getBalance();
     }
 
 }

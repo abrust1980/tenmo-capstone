@@ -4,6 +4,7 @@ public class Account {
     private long userId;
     private String userName;
     private long accountId;
+    private Balance balance;
 
 
     public long getUserId() {
@@ -28,5 +29,13 @@ public class Account {
 
     public void setAccountId(long accountId) {
         this.accountId = accountId;
+    }
+
+    public Balance getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Balance balance) {
+        this.balance = balance;
     }
 }
