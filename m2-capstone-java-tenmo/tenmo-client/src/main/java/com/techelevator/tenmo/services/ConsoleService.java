@@ -52,6 +52,11 @@ public class ConsoleService {
         return new UserCredentials(username, password);
     }
 
+    public void printBalance(double balance) {
+        System.out.printf("Your current account balance is: $%.2f", balance );
+
+    }
+
     public String promptForString(String prompt) {
         System.out.print(prompt);
         return scanner.nextLine();
