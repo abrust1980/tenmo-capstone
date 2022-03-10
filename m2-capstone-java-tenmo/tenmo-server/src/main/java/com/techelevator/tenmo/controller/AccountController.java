@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.util.List;
 
 @PreAuthorize("isAuthenticated()")
 @RestController
-@RequestMapping("/account")
+@RequestMapping("/accounts")
 public class AccountController {
     private AccountDao accountDao;
 
@@ -20,10 +21,15 @@ public class AccountController {
         this.accountDao = accountDao;
     }
 
-    @RequestMapping(path="/balance", method= RequestMethod.GET)
+    @RequestMapping(path="/me/balance", method= RequestMethod.GET)
     public Balance getAccountBalance(Principal principal){
         Account currentAccount = accountDao.getAccount(principal.getName());
         return currentAccount.getBalance();
+    }
+
+    @RequestMapping(path="", method = RequestMethod.GET)
+    public List<Account> getOtherAccounts(Principal principal){
+        return accountDao.listOtherAccounts(principal.getName());
     }
 
 }

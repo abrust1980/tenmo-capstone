@@ -1,5 +1,6 @@
 package com.techelevator.tenmo;
 
+import com.techelevator.tenmo.model.Account;
 import com.techelevator.tenmo.model.AuthenticatedUser;
 import com.techelevator.tenmo.model.Balance;
 import com.techelevator.tenmo.model.UserCredentials;
@@ -7,6 +8,7 @@ import com.techelevator.tenmo.services.AccountService;
 import com.techelevator.tenmo.services.AuthenticationService;
 import com.techelevator.tenmo.services.ConsoleService;
 
+import java.math.BigDecimal;
 import java.net.http.HttpHeaders;
 
 public class App {
@@ -107,8 +109,12 @@ public class App {
 	}
 
 	private void sendBucks() {
-		// TODO Auto-generated method stub
-		
+        Account[] accounts = accountService.getOtherAccounts();
+		consoleService.printTransferMenu(accounts);
+		int transferToId = consoleService.promptForInt("Enter ID of user you are sending to (0 to cancel): ");
+        if (transferToId != 0){
+            BigDecimal transferAmount = consoleService.promptForBigDecimal("Enter amount: ");
+        }
 	}
 
 	private void requestBucks() {

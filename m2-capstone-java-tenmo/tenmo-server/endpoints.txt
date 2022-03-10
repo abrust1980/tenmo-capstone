@@ -16,7 +16,11 @@ GET: /account/transfer/pending
 Update pending to approve/reject
 PUT: /account/transfers
 
-/accounts/me
-/accounts/{username}
+/accounts/me/balance
+/accounts/{username}/balance
+/accounts/me/transfers
+/accounts/me/transfers/pending
 
+/transfers/{id}
+/transfers/
 /transfers/

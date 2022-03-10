@@ -1,13 +1,20 @@
 package com.techelevator.tenmo.model;
 
-public class Balance {
-    private double balance;
+import java.math.BigDecimal;
 
-    public double getBalance() {
+public class Balance {
+    private BigDecimal balance;
+
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
+
+    public double getDoubleValue(){
+        return balance.doubleValue();
+    }
+
 }

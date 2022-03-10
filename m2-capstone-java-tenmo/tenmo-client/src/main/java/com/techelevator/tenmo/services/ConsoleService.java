@@ -1,6 +1,7 @@
 package com.techelevator.tenmo.services;
 
 
+import com.techelevator.tenmo.model.Account;
 import com.techelevator.tenmo.model.UserCredentials;
 
 import java.math.BigDecimal;
@@ -54,8 +55,29 @@ public class ConsoleService {
 
     public void printBalance(double balance) {
         System.out.printf("Your current account balance is: $%.2f", balance );
-
     }
+
+    public void printTransferMenu(Account[] accounts){
+        printMenuBorder();
+        System.out.println("Users");
+        System.out.println("ID          Name");
+        printMenuBorder();
+        for(Account account : accounts){
+            System.out.printf("%-11s %s", account.getUserId(), account.getUserName());
+            System.out.println();
+        }
+        printMenuSubBorder();
+    }
+
+    private void printMenuBorder(){
+        System.out.println("-------------------------------------------");
+    }
+
+    private void printMenuSubBorder() {
+        System.out.println("---------");
+    }
+
+
 
     public String promptForString(String prompt) {
         System.out.print(prompt);
