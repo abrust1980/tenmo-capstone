@@ -1,12 +1,10 @@
 package com.techelevator.tenmo;
 
-import com.techelevator.tenmo.model.Account;
-import com.techelevator.tenmo.model.AuthenticatedUser;
-import com.techelevator.tenmo.model.Balance;
-import com.techelevator.tenmo.model.UserCredentials;
+import com.techelevator.tenmo.model.*;
 import com.techelevator.tenmo.services.AccountService;
 import com.techelevator.tenmo.services.AuthenticationService;
 import com.techelevator.tenmo.services.ConsoleService;
+import com.techelevator.tenmo.services.TransferService;
 
 import java.math.BigDecimal;
 import java.net.http.HttpHeaders;
@@ -19,6 +17,7 @@ public class App {
     private final AuthenticationService authenticationService = new AuthenticationService(API_BASE_URL);
     private final AccountService accountService = new AccountService(API_BASE_URL);
     private AuthenticatedUser currentUser;
+    private TransferService transferService = new TransferService(API_BASE_URL);
 
     public static void main(String[] args) {
         App app = new App();
@@ -65,6 +64,7 @@ public class App {
             consoleService.printErrorMessage();
         } else {
             accountService.setUser(currentUser);
+            transferService.setUser(currentUser);
         }
     }
 
@@ -114,8 +114,19 @@ public class App {
 		int transferToId = consoleService.promptForInt("Enter ID of user you are sending to (0 to cancel): ");
         if (transferToId != 0){
             BigDecimal transferAmount = consoleService.promptForBigDecimal("Enter amount: ");
+            OutboundTransfer outboundTransfer = new OutboundTransfer();
+            outboundTransfer.setAmount(transferAmount);
+            outboundTransfer.setUserIdFrom(currentUser.getUser().getId());
+            outboundTransfer.setUserIdTo(transferToId);
+            outboundTransfer.setType("Send");
+            boolean isSuccessful = transferService.newTransfer(outboundTransfer);
+            if (!isSuccessful) {
+                consoleService.printErrorMessage();
+            }
         }
+
 	}
+
 
 	private void requestBucks() {
 		// TODO Auto-generated method stub

@@ -1,0 +1,8 @@
+2022-03-10T16:19:37.9118023 500 : [{"timestamp":"2022-03-10T21:19:37.864+00:00","status":500,"error":"Internal Server Error","message":"Could not write JSON: (was java.lang.NullPointerException); nested exception is com.fasterxml.jacks... (448 bytes)]
+2022-03-10T17:13:51.3527469 400 : [{"timestamp":"2022-03-10T22:13:51.329+00:00","status":400,"error":"Bad Request","message":"Required request body is missing: public boolean com.techelevator.tenmo.controller.TransferController.postTra... (542 bytes)]
+2022-03-10T17:20:19.1173948 400 : [{"timestamp":"2022-03-10T22:20:19.096+00:00","status":400,"error":"Bad Request","message":"Can't send more money than is in your account","path":"/transfers/"}]
+2022-03-10T17:20:38.6634045 400 : [{"timestamp":"2022-03-10T22:20:38.643+00:00","status":400,"error":"Bad Request","message":"Validation failed for object='transferIncoming'. Error count: 1","errors":[{"codes":["Positive.transferIncomi... (579 bytes)]
+2022-03-10T17:21:27.1842586 401 : [no body]
+2022-03-10T17:22:09.5986726 401 : [no body]
+2022-03-10T17:25:05.7487412 400 : [{"timestamp":"2022-03-10T22:25:05.728+00:00","status":400,"error":"Bad Request","message":"Can't send more money than is in your account","path":"/transfers/"}]
+2022-03-10T17:25:47.7175575 401 : [no body]

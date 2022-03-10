@@ -3,7 +3,7 @@ package com.techelevator.tenmo.model;
 import java.math.BigDecimal;
 
 public class Balance {
-    private BigDecimal balance;
+    private BigDecimal balance = new BigDecimal(0.0);
 
     public BigDecimal getBalance() {
         return balance;
