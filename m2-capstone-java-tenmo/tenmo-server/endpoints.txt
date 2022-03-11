@@ -14,12 +14,12 @@ See only pending transfers
 GET: /account/transfer/pending
 
 Update pending to approve/reject
-PUT: /account/transfers
+PUT: /accounts/me/transfers/{id}
 
 /accounts/me/balance
 /accounts/{username}/balance
 /accounts/me/transfers
-/accounts/me/transfers/pending
+/accounts/me/transfers/pending/
 
 /transfers/{id}
 /transfers/

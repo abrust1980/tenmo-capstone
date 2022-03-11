@@ -3,18 +3,18 @@ package com.techelevator.tenmo.model;
 import java.math.BigDecimal;
 
 public class Balance {
-    private BigDecimal balance = new BigDecimal(0.0);
+    private double balance;
 
-    public BigDecimal getBalance() {
+    public double getBalance() {
         return balance;
     }
+    public Balance(){}
 
-    public void setBalance(BigDecimal balance) {
+    public Balance(double balance) {
         this.balance = balance;
     }
 
-    public double getDoubleValue(){
-        return balance.doubleValue();
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
-
 }

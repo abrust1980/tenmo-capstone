@@ -68,7 +68,7 @@ public class JdbcAccountDao implements AccountDao{
         Account account = new Account();
         account.setUserId(row.getLong("user_id"));
         account.setUserName(row.getString("username"));
-        account.setBalance(row.getBigDecimal("balance"));
+        account.setBalance(row.getDouble("balance"));
         return account;
     }
 }

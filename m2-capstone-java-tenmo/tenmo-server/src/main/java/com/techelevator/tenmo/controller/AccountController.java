@@ -24,7 +24,8 @@ public class AccountController {
     @RequestMapping(path="/me/balance", method= RequestMethod.GET)
     public Balance getAccountBalance(Principal principal){
         Account currentAccount = accountDao.getAccount(principal.getName());
-        return currentAccount.getBalance();
+        Balance balance = new Balance(currentAccount.getBalance());
+        return balance;
     }
 
     @RequestMapping(path="", method = RequestMethod.GET)
