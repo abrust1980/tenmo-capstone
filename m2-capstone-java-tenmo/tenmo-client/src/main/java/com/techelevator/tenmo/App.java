@@ -113,7 +113,26 @@ public class App {
 	}
 
 	private void viewPendingRequests() {
-		// TODO Auto-generated method stub
+        TransferDetail[] transferDetails = transferService.getPendingTransfers();
+        consoleService.printPendingTransferMenu(transferDetails, currentUser.getUser().getUsername());
+        int transferId = consoleService.promptForInt("Please enter transfer ID to approve/reject (0 to cancel): ");
+        if (transferId != 0){
+            for(TransferDetail currentTransferDetail : transferDetails) {
+                if(transferId == currentTransferDetail.getTransferId()) {
+                    consoleService.printApproveOrRejectMenu();
+                    int menuChoice = consoleService.promptForMenuSelection("Please choose an option: ");
+                    if (menuChoice == 1){
+                        //approve
+                        TransferStatus transfer = new TransferStatus("Approved", currentTransferDetail.getTransferId());
+                        transferService.updatePendingTransfer(transfer);
+                    } else if ( menuChoice == 2){
+                        //reject
+                        TransferStatus transfer = new TransferStatus("Rejected", currentTransferDetail.getTransferId());
+                        transferService.updatePendingTransfer(transfer);
+                    }
+                    }
+                }
+        }
 		
 	}
 
@@ -138,7 +157,21 @@ public class App {
 
 
 	private void requestBucks() {
-		// TODO Auto-generated method stub
+        Account[] accounts = accountService.getOtherAccounts();
+        consoleService.printTransferMenu(accounts);
+        int transferToId = consoleService.promptForInt("Enter ID of user you are requesting from (0 to cancel): ");
+        if (transferToId != 0){
+            BigDecimal transferAmount = consoleService.promptForBigDecimal("Enter amount: ");
+            OutboundTransfer outboundTransfer = new OutboundTransfer();
+            outboundTransfer.setAmount(transferAmount);
+            outboundTransfer.setUserIdTo(currentUser.getUser().getId());
+            outboundTransfer.setUserIdFrom(transferToId);
+            outboundTransfer.setType("Request");
+            boolean isSuccessful = transferService.newTransfer(outboundTransfer);
+            if (!isSuccessful) {
+                consoleService.printErrorMessage();
+            }
+        }
 		
 	}
 

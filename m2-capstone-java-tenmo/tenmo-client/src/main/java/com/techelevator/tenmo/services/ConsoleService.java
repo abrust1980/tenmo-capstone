@@ -84,9 +84,27 @@ public class ConsoleService {
         System.out.println("ID          From/To                 Amount");
         printMenuBorder();
         for(TransferDetail transfer : transferDetails) {
-            System.out.printf( "%-11s %-22s $ %.2f ", transfer.getTransferId(), transfer.getFromOrTo(userName), transfer.getAmount());
+            System.out.printf( "%-11s %-22s %s", transfer.getTransferId(), transfer.getFromOrTo(userName), transfer.amountToString());
             System.out.println();
         }
+    }
+
+    public void printPendingTransferMenu(TransferDetail[] transferDetails, String userName){
+        printMenuBorder();
+        System.out.println("Pending Transfers");
+        System.out.println("ID          To                 Amount");
+        printMenuBorder();
+        for(TransferDetail transfer : transferDetails) {
+            System.out.printf( "%-11s %-22s %s", transfer.getTransferId(), transfer.getUserNameTo(), transfer.amountToString());
+            System.out.println();
+        }
+        printMenuSubBorder();
+    }
+    public void printApproveOrRejectMenu(){
+        System.out.println("1: Approve");
+        System.out.println("2: Reject");
+        System.out.println("3: Don't approve or reject");
+        printMenuSubBorder();
     }
     public void printTransferDetail(TransferDetail transferDetail) {
        printMenuBorder();
