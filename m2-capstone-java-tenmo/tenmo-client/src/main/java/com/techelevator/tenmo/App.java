@@ -99,8 +99,17 @@ public class App {
 	}
 
 	private void viewTransferHistory() {
-		// TODO Auto-generated method stub
-		
+		TransferDetail[] transferDetails = transferService.getAllTransfers();
+        consoleService.printViewTransfersMenu(transferDetails, currentUser.getUser().getUsername());
+        int transferId = consoleService.promptForInt("Please enter transfer ID to view details (0 to cancel): ");
+		if (transferId!= 0) {
+            for(TransferDetail currentTransferDetail : transferDetails) {
+                if(transferId == currentTransferDetail.getTransferId()) {
+                    consoleService.printTransferDetail(currentTransferDetail);
+                }
+            }
+
+        }
 	}
 
 	private void viewPendingRequests() {

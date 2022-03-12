@@ -2,6 +2,7 @@ package com.techelevator.tenmo.services;
 
 
 import com.techelevator.tenmo.model.Account;
+import com.techelevator.tenmo.model.TransferDetail;
 import com.techelevator.tenmo.model.UserCredentials;
 
 import java.math.BigDecimal;
@@ -77,7 +78,22 @@ public class ConsoleService {
         System.out.println("---------");
     }
 
-
+    public void printViewTransfersMenu(TransferDetail[] transferDetails, String userName){
+        printMenuBorder();
+        System.out.println("Transfers");
+        System.out.println("ID          From/To                 Amount");
+        printMenuBorder();
+        for(TransferDetail transfer : transferDetails) {
+            System.out.printf( "%-11s %-22s $ %.2f ", transfer.getTransferId(), transfer.getFromOrTo(userName), transfer.getAmount());
+            System.out.println();
+        }
+    }
+    public void printTransferDetail(TransferDetail transferDetail) {
+       printMenuBorder();
+        System.out.println("Transfer Details");
+        printMenuBorder();
+        System.out.println(transferDetail);
+    }
 
     public String promptForString(String prompt) {
         System.out.print(prompt);
