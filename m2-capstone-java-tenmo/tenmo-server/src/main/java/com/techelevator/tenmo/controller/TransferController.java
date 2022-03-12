@@ -43,7 +43,8 @@ public class TransferController {
     }
 
     @RequestMapping(path="/transfers", method = RequestMethod.PUT)
-    public boolean updateTransferStatus(Principal principal, @Valid @RequestBody TransferStatus transferStatus){
+    public boolean updateTransferStatus(Principal principal, @Valid @RequestBody TransferStatus transferStatus)
+    throws TransferInsufficientAmount, TransferStatusInvalidException{
         boolean isSuccessful = false;
         TransferDetail transfer = transferDao.getTransferByIdForUser(principal.getName(), transferStatus.getTransferId());
         Account transferFromAccount = accountDao.getAccount(transfer.getUserNameFrom());
@@ -56,12 +57,13 @@ public class TransferController {
                 isSuccessful = transferDao.updatePendingTransfer(transferStatus, principal.getName(), transfer);
             } else {
                 //not enough funds
+                throw new TransferInsufficientAmount();
             }
-
         }
-//        } else {
-//            //throw invalid status
-//        }
+        else {
+            //throw invalid status
+            throw new TransferStatusInvalidException();
+        }
 
         return isSuccessful;
     }
