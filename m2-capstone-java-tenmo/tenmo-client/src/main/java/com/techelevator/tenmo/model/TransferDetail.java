@@ -34,6 +34,10 @@ public class TransferDetail {
         return Objects.hash(userNameFrom, userNameTo, transferId, amount, transferType, transferStatus);
     }
 
+    public String amountToString(){
+        return String.format("$ %.2f", amount);
+    }
+
     public String getFromOrTo(String userName) {
         String userNameFromOrTo = "";
         if(userName.equals(userNameFrom)) {

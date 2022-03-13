@@ -1,4 +1,0 @@
-2022-03-12T15:17:51.8466115 400 : [{"timestamp":"2022-03-12T20:17:51.810+00:00","status":400,"error":"Bad Request","message":"Invalid transfer type.","path":"/transfers/"}]
-2022-03-12T15:22:09.9529189 400 : [{"timestamp":"2022-03-12T20:22:09.950+00:00","status":400,"error":"Bad Request","message":"Invalid transfer type.","path":"/transfers/"}]
-2022-03-12T15:27:04.2984236 400 : [{"timestamp":"2022-03-12T20:27:04.296+00:00","status":400,"error":"Bad Request","message":"Invalid transfer type.","path":"/transfers/"}]
-2022-03-12T15:27:41.3327538 400 : [{"timestamp":"2022-03-12T20:27:41.331+00:00","status":400,"error":"Bad Request","message":"Invalid transfer type.","path":"/transfers/"}]

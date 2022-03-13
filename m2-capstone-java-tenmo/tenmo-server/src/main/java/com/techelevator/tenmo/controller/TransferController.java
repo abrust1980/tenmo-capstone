@@ -97,7 +97,7 @@ public class TransferController {
                     }
                 }
             }
-            if (transferIncoming.getType().equalsIgnoreCase("Request")) {
+            else if (transferIncoming.getType().equalsIgnoreCase("Request")) {
                 if (validateRequestTransfer(transferToAccount, transferFromAccount, principal.getName())) {
                     //add transfer to db
                     success = transferDao.addRequestTransfer(transferIncoming);
