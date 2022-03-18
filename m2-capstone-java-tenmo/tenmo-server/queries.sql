@@ -89,3 +89,8 @@ JOIN transfer_type ON transfer.transfer_type_id = transfer_type.transfer_type_id
 WHERE transfer_id = ? AND
 ( user_from.username =? OR user_to.username =?)
 
+SELECT * from transfer
+JOIN account 
+
+
+
